@@ -2,36 +2,24 @@
 ```
 docker build -t app .
 ```
+- création d'un volume
+```
+docker volume create dst
+```
 
 - Lancer l'app
 ```
-docker run -p 80:80 app
+docker run -e SRC='./src' -e DST='./dst' -v dst:/usr/src/app img_1a
 ```
 
-- Lancer l'app avec un bind-mount (pour écriture du fichier via l'url localhost:80/write_request )
-
+- Vérification avec un ls dans le volume "dst" dans le repertoire dst
 ```
-docker run -p 80:80 -v $(pwd):/opt/demo/project app 
-```
-
-
-- Ajouter une variable environnementale
-
-```
-docker run -p 80:80 -e MSG_TO_WRITE="from container 1" -v $(pwd):/opt/demo/project app 
+docker run -v dst:/usr/src/app bash -c "ls /usr/src/app/dst"
 ```
 
-- Exercice II - 6
+![Alt text](image.png)
 
-```python
-
-import subprocess
-
-subprocess.run('docker build -t img .', shell=True, text=True)
-# pour tester un seuil
-# subprocess.call("docker run -d -p 81:80 img", shell=True, text=True)
-
-for i in range(10):
-    port = 80 + i
-    subprocess.call("docker run -d -p {port}:80 img", shell=True, text=True)
+- le script n’attende plus après avoir fait la copie.
+```
+j'ai enlevé le time.sleep(10000)
 ```
