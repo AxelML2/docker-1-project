@@ -10,4 +10,3 @@ docker run -p 80:80 -v $pwd`:/usr/src/app img_d
 ```
 
 ![Alt text](image.png)
-![Alt text](image.png)
