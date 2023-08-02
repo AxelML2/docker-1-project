@@ -95,5 +95,3 @@ Attaching to subpart_b-app-1
 subpart_b-app-1  | FOO is Some variable for 1, BAR is Some variable for 2
 subpart_b-app-1 exited with code 0
 ```
-
-# On voit bien que la commande echo est executée avec les bonnes variables environnementales.
