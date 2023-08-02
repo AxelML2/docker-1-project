@@ -1,0 +1,16 @@
+,0,1
+3,Date de première version,20 février 1991[1]
+4,Paradigmes,"Objet, impératif et fonctionnel"
+5,Auteur,Guido van Rossum
+6,Développeurs,Python Software Foundation
+7,Dernière version,3.11.4 (7 juin 2023)[2]
+8,Version en développement,3.12.0b4 (11 juillet 2023)[3]
+9,Typage,"Fort, dynamique, duck typing"
+10,Influencé par,"ABC, C, Eiffel, ICON, Modula-3, Java, Perl, Smalltalk, Tcl"
+11,A influencé,"Ruby, Groovy, Boo, Julia"
+12,Implémentations,"CPython, Jython, IronPython, PyPy"
+13,Écrit en,"C pour CPython, Java pour Jython, C# pour IronPython et en Python lui-même pour PyPy"
+14,Système d'exploitation,Multiplateforme
+15,Licence,Licence libre : Python Software Foundation License
+16,Site web,www.python.org
+17,Extension de fichier,"py, pyc, pyd, pyo, pyw, pyz et pyi"

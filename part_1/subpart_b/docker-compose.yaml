@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    image: busybox
+    env_file: .env
+    command: sh -c "echo FOO is $VAR_1, BAR is $VAR_2"

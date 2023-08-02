@@ -1,0 +1,3 @@
+FROM busybox
+
+CMD echo FOO is $VAR_1, BAR is $VAR_2

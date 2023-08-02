@@ -1,0 +1,15 @@
+,0,1
+4,Date de première version,Mai 1996
+5,Paradigme,"Multi-paradigmes : script, orienté objet (orienté prototype), impératif, fonctionnel"
+6,Auteur,Brendan Eich
+7,Développeurs,"Netscape Communications Corporation, Mozilla Foundation"
+8,Dernière version,13 - ECMA-262 (Juin 2022)
+9,Version en développement,ECMAScript 2022 (22 juillet 2021)[1]
+10,Typage,"dynamique, faible"
+11,Normes,ECMA-262 ISO/CEI 16262
+12,Dialectes,"JavaScript, JScript, ECMAScript"
+13,Influencé par,"Self, Scheme[2], Perl, C, C++, Java, Python"
+14,A influencé,"JScript, JScript .NET, Objective-J, TIScript"
+15,Implémentations,"SpiderMonkey, Rhino, KJS, JavaScriptCore, V8"
+16,Site web,Mozilla
+17,Extension de fichier,js
