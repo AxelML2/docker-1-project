@@ -6,6 +6,9 @@
 
 ```bash
 docker build -t img_d
+```
+
+```bash
 docker run -p 80:80 -v $pwd`:/usr/src/app img_d
 ```
 
