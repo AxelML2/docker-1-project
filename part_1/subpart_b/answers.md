@@ -59,10 +59,6 @@ CMD
 ```
 docker run -e VAR_1='Some variable for 1' -e VAR_2='Some variable for 2' img_1bcorrecter
 ```
-
-![Alt text](image-1.png)
-
-
 - Voici à quoi ressemble le "Dockerfile-corrected" :
 
 ```Dockerfile
@@ -71,4 +67,26 @@ FROM busybox
 CMD echo FOO is $VAR_1, BAR is $VAR_2
 ``` 
 
+![Alt text](image-1.png)
 
+### 4.
+
+- Dans mon docker-compose.yaml :
+
+```Dockerfile
+services:
+  app:
+    build: .
+    image: busybox
+    env_file: .env
+    command: sh -c "echo FOO is $VAR_1, BAR is $VAR_2"
+```
+
+- et le .env 
+
+```
+VAR_1=Some variable for 1
+VAR_2=Some variable for 2
+```
+
+![Alt text](image-2.png)
