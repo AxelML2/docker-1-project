@@ -17,12 +17,12 @@ docker run img_1b
 ```
 VAR_1
 ```
-- a cette valeur ( Some variable for 1 ) car il lui ai attribué un variable d'environnement
+- VAR _1 a cette valeur ( Some variable for 1 ) car il lui ai attribué un variable d'environnement
 
 ```
 VAR_2
 ```
-- a cette valeur ( vide ) car il n'a pas de variable d'environnement
+- VAR_2 a cette valeur ( vide ) car il n'a pas de variable d'environnement
 
 - J'ai corrigé et supprimer pour avoir ce résultat :
 
@@ -43,7 +43,7 @@ CMD echo FOO is $VAR_1, BAR is $VAR_2
 
 ### 3.
 
-- J'ai donc enlevé les variables d'environnement dans le Dockerfile-corrected :
+- J'ai donc enlevé les variables d'environnements dans le Dockerfile-corrected :
 
 ```Dockerfile
 

@@ -11,26 +11,26 @@ import ssl
 import requests
 import pandas as pd
 
-# définie l'url dans un variable de python et de javascript
+# définie l'url dans un variable de python et de javascript 😀
 urls = {
     "python": "https://fr.wikipedia.org/wiki/Python_(langage)",
     "javascript": "https://fr.wikipedia.org/wiki/JavaScript",
 }
 
-# permet de créer un tableau avec pandas depuis un page html
+# permet de créer un tableau avec pandas depuis un page html😀
 def get_table(url):
     context = ssl._create_unverified_context()
     response = request.urlopen(url, context=context)
     html = response.read()
     return pd.read_html(html)[0].iloc[1:-1, 0:2].dropna()
 
-# créer un dossier language si nécessaire, prendre la table depuis l'url et le mettre en csv dans le dossier du language avec le nom "wikipedia_table.csv
+# créer un dossier language si nécessaire, prendre la table depuis l'url et le mettre en csv dans le dossier du language avec le nom "wikipedia_table.csv😀
 if __name__ == "__main__":
     for language, url in urls.items():
         os.makedirs(language, exist_ok=True)
         table = get_table(url)
         table.to_csv(f"{language}/wikipedia_table.csv")
-        # créer un fichier logs.txt et "a" = append , avec le date au moment de l'execution du script il va l'écrire dans le fichier et         l'afficher dans le prompt
+        # créer un fichier logs.txt et "a" = append , avec le date au moment de l'execution du script il va l'écrire dans le fichier et         l'afficher dans le prompt😀
         with open("logs.txt", "a") as f:
             now = datetime.datetime.now().isoformat()
             message = f"{now}: {language} data scraped\n"
@@ -38,9 +38,9 @@ if __name__ == "__main__":
             f.write(message)
 
     ############################# question 4
-
+    # définie une variable URL_LOGS😀
     URL_LOGS = "????"
-
+    # fait une requete post avec la variable URL_LOGS, les logs sous forme json et le print avec le status code
     with open("logs.txt", "r") as f:
         try:
             response = requests.post(URL_LOGS, json={"logs": f.read()})
@@ -52,8 +52,8 @@ if __name__ == "__main__":
             print(e)
 ```
 
-### 2.
-#### a.
+### 2. #### a.
+
 
 - L'image s'appel bien img_1c
 #### b.
@@ -76,7 +76,7 @@ docker run --rm -v $pwd/python:/usr/src/app/python img_1c
 ```bash
 docker run --rm -v $pwd/javascript:/usr/src/app/javascript img_1c 
 ```
-#### 3.
+### 3.
 
 - J'ai choisi de rajouter PHP pour faire LE trio de language de programmation, comme les oiseaux légendaires Pokemon
 
@@ -111,7 +111,7 @@ docker run --rm -v $pwd/php:/usr/src/app/php img_1cplus
 ![Alt text](image.png)
 
 
-#### 4.
+### 4.
 
 - Eplication du code en dessous de "qestion 4" dans le script.py :
 - ça va effectuer une requête post sur une l'url définie dans la variable URL_LOGS puis va lire le fichier de log
@@ -149,7 +149,7 @@ docker run --rm -v $pwd/php:/usr/src/app/python img_1cplus
 ![Alt text](image-1.png)
 
 
-#### 5.
+### 5.
 
 • Création d'un dossier "simple" avec les fichiers "Dockerfile-simple.txt" "requirements-simple.txt et "script_simple.py"
 
@@ -166,7 +166,7 @@ docker run --rm -e URL="https://fr.wikipedia.org/wiki/Hypertext_Markup_Language"
 
 ![Alt text](image-3.png)
 
-#### 6.
+### 6.
 
 - Pour ce script j'utilise "subprocess" pour executer des commandes bash via un script python
 
