@@ -1,6 +1,6 @@
 ### 1.
 
-- Explication du fichier "script.py".
+- Explication du fichier "script.py"
 
 ```python
 import datetime
