@@ -52,7 +52,8 @@ if __name__ == "__main__":
             print(e)
 ```
 
-### 2. #### a.
+### 2. 
+#### a.
 
 
 - L'image s'appel bien img_1c

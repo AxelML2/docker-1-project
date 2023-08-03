@@ -1,4 +1,5 @@
-### 1. ####a.
+### 1. 
+#### a.
 
 
 - Bâtir l'image app 
@@ -11,14 +12,16 @@ docker build -t app .
 docker volume create dst
 ```
 
-### 1. #### b.
+### 1. 
+#### b.
    
 
 - Lancer l'app
 ```
 docker run -e SRC='./src' -e DST='./dst' -v dst:/usr/src/app img_1a
 ```
-### 1. #### c. 
+### 1. 
+#### c. 
  
 
 
@@ -36,7 +39,8 @@ docker run -v dst:/usr/src/app bash -c "ls /usr/src/app/dst"
 j'ai enlevé le time.sleep(10000)
 ```
 
-### 3. #### a.
+### 3. 
+#### a.
 
 
 - Build de l'image bash
