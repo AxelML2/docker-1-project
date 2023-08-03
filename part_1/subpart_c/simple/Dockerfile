@@ -8,4 +8,4 @@ RUN pip install -r requirements-simple.txt
 
 COPY ./simple/script-simple.py .
 
-ENTRYPOINT python script-simple.py
+ENTRYPOINT python sscript-simple.py

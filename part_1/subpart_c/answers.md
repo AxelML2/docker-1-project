@@ -11,27 +11,26 @@ import ssl
 import requests
 import pandas as pd
 
-# Le 1er bloc définie la variable urls qui correspont à 2 sites wikipedia (python et javascript)
+# définie l'url dans un variable de python et de javascript
 urls = {
     "python": "https://fr.wikipedia.org/wiki/Python_(langage)",
     "javascript": "https://fr.wikipedia.org/wiki/JavaScript",
 }
 
-# Le 2ème bloc est une fonction(get_table) qui permet de récupérer une table grâce au module request et de mettre en forme le tableau avec pandas
+# permet de créer un tableau avec pandas depuis un page html
 def get_table(url):
     context = ssl._create_unverified_context()
     response = request.urlopen(url, context=context)
     html = response.read()
     return pd.read_html(html)[0].iloc[1:-1, 0:2].dropna()
 
-# Le 3ème bloc va parcourir les urls créer un dossier language si il n'existe pas, créer une table avec les urls puis transformer cette table en fichier csv et nommer le fichier csv en fonction du language.
-# Ensuite il va ouvrir un fichier "logs.txt" en mode "append", récupérer la date actuelle en format "YYYY-MM-DD" puis va définir du texte dans le fichier de logs au format : "date actuelle: language data scrapped" Puis il va afficher le message et l'écrire dans le fichier de logs.
+# créer un dossier language si nécessaire, prendre la table depuis l'url et le mettre en csv dans le dossier du language avec le nom "wikipedia_table.csv
 if __name__ == "__main__":
     for language, url in urls.items():
         os.makedirs(language, exist_ok=True)
         table = get_table(url)
         table.to_csv(f"{language}/wikipedia_table.csv")
-
+        # créer un fichier logs.txt et "a" = append , avec le date au moment de l'execution du script il va l'écrire dans le fichier et         l'afficher dans le prompt
         with open("logs.txt", "a") as f:
             now = datetime.datetime.now().isoformat()
             message = f"{now}: {language} data scraped\n"
@@ -68,10 +67,15 @@ if __name__ == "__main__":
 
 ```bash
 docker build -t img_1c .
-docker run --rm -v $pwd/python:/usr/src/app/python img_1c
-docker run --rm -v $pwd/javascript:/usr/src/app/javascript img_1c 
 ```
 
+```bash
+docker run --rm -v $pwd/python:/usr/src/app/python img_1c
+```
+
+```bash
+docker run --rm -v $pwd/javascript:/usr/src/app/javascript img_1c 
+```
 #### 3.
 
 - J'ai choisi de rajouter PHP pour faire LE trio de language de programmation, comme les oiseaux légendaires Pokemon
@@ -90,8 +94,17 @@ urls = {
 
 ```bash
 docker build -t imc_1cplus .
+```
+
+```bash
 docker run --rm -v $pwd/python:/usr/src/app/python img_1cplus
-docker run --rm -v $pwd/javascript:/usr/src/app/javascript img_1cplus
+```
+
+```bash
+docker run --rm -v $pwd/javascript:/usr/src/app/javascript img_1cplus 
+```
+
+```bash
 docker run --rm -v $pwd/php:/usr/src/app/php img_1cplus 
 ```
 
@@ -128,6 +141,9 @@ et build des images "img_1capp" et "img_1cplus"
 
 ```bash
 docker run -p 80:80 img_1capp
+```
+
+```bash
 docker run --rm -v $pwd/php:/usr/src/app/python img_1cplus
 ```
 ![Alt text](image-1.png)
@@ -166,3 +182,7 @@ process=subprocess.Popen(["powershell",f'docker run --rm -e URL="https://fr.wiki
 ```
 
 ![Alt text](image-4.png)
+
+- pendant ce temps sur le run de img_1capp 
+
+![Alt text](image-5.png)

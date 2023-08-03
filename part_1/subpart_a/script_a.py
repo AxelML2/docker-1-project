@@ -19,4 +19,5 @@ def copy_from_to(src, dst):
 
 if __name__ == "__main__":
     SRC, DST = get_src_and_dest()
-    copy_from_to(SRC, DST)
+    copy_from_to(SRC, DST) 
+    #time.sleep(10000)  La question 2 demande d'enlever l'attente après la copie 😀
