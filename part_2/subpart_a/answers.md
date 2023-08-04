@@ -288,7 +288,7 @@ docker run -p 80:80 img_insert
 ```
 docker run -p 80:80 -e port_contenair=’80’ -e ROUTE=’listener’ img_insert
 ```
-- Tester les scripts : 
+- Tester le script : 
 
 ```
 python3 insert.py
