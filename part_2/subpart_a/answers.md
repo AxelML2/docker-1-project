@@ -192,3 +192,104 @@ db = get_db()
 _animals = db.animal_tb.find()
 print(list(_animals))
 ```
+### 7
+
+- Créer une nouvelle image img_insert qui permette de dockeriser le script précédent. Donner les commandes nécessaires pour l’image et le conteneur
+- Fichier app.py
+```
+from flask import Flask, render_template, request, url_for, jsonify #😀
+import pymongo
+from pymongo import MongoClient
+import requests #😀
+import os #😀
+
+app = Flask(__name__)
+
+PORT_CONTAINER = os.environ.get("PORT_CONTAINER") #😀
+ROUTE = os.environ.get("ROUTE") #😀
+
+print("PORT_CONTAINER is:", PORT_CONTAINER) #😀
+print("ROUTE is:", ROUTE) #😀
+
+def get_db():
+    client = MongoClient(
+        host="test_mongodb",
+        port=27017,
+        username="root",
+        password="pass",
+        authSource="admin",
+    )
+    db = client["animal_db"]
+    return db
+
+
+@app.route("/")
+def ping_server():
+    return "Welcome to the world of animals."
+
+
+@app.route("/animals")
+def get_stored_animals():
+    db = get_db()
+    _animals = db.animal_tb.find()
+    animals = [
+        {"id": animal["id"], "name": animal["name"], "type": animal["type"]}
+        for animal in _animals
+    ]
+    return jsonify({"animals": animals})
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+@app.route(f"/{ROUTE}", methods=["POST"]) #😀
+def listener(): #😀
+    data_request = request.get_json(force=True) #😀
+    try: #😀
+        dict_response = {"success": True, "data_received": data_request} #😀
+    except: #😀
+        dict_response = {"success": False} #😀 
+    return jsonify(dict_response) #😀
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(PORT_CONTAINER)) #😀
+
+```
+
+- Fichier insert.py
+```
+# make a POST request
+import requests
+
+data = {"123": 1234}
+
+response = requests.get("http://localhost:80/")
+print(response.status_code)
+
+
+response = requests.post("http://localhost:80/listener", json=data)
+print(response.status_code)
+print(response.json())
+```
+
+### 8
+
+- bâtir l’image :
+
+```
+docker build -t img_insert
+```
+- Lancer l’image :
+```
+docker run -p 80:80 img_insert
+```
+- Lancer l’image avec les variables conteneur et port
+```
+docker run -p 80:80 -e port_contenair=’80’ -e ROUTE=’listener’ img_insert
+```
+- Tester les scripts : 
+
+```
+python3 insert.py
+```
