@@ -91,7 +91,7 @@ flask
 ```
 flask
 pymongo
-
+```
 - je  supprime donc le docker-compose.yaml et je créer 2 Dockerfile, 1 pour l'app et 1 pour la db. Dans l'ordre j'execute ces commandes :
 
 ```bash
