@@ -49,6 +49,49 @@ services:
 ![image](https://github.com/Sombra26/docker-1-project-part-2/assets/108517832/8c06855f-97c5-4531-9440-342658e0a1e4)
 
 ### 4.
+- Réécrire deux Dockerfiles et donner les commandes qui permettent de lancer cette même application sans utiliser docker compose
+
+- Docker file-app
+
+```
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY app.py .
+COPY requirements-app.txt .
+
+
+RUN pip install -r requirements-app.txt
+
+CMD ["python3", "-u","app.py"] 😀
+```
+- Dockerfile-db
+
+```
+FROM python:3.9-slim
+
+WORKDIR /db
+
+ENV MONGO_INITDB_DATABASE="animal_db"
+ENV MONGO_INITDB_ROOT_USERNAME="root"
+ENV ONGO_INITDB_ROOT_PASSWORD="pass"
+
+COPY app.py .
+COPY requirements-db.txt .
+
+RUN pip install -r requirements-db.txt
+```
+- Nous avons créer deux fichiers requirements.txt pour différencier leur utilité en fontion des apps.
+- requirements-app.txt
+```
+flask
+```
+
+- requirements-db.txt
+```
+flask
+pymongo
 
 - je  supprime donc le docker-compose.yaml et je créer 2 Dockerfile, 1 pour l'app et 1 pour la db. Dans l'ordre j'execute ces commandes :
 
