@@ -192,6 +192,47 @@ db = get_db()
 _animals = db.animal_tb.find()
 print(list(_animals))
 ```
+
+### 6 
+- La méthode de .insert_many
+```
+import pymongo
+from pymongo import MongoClient
+
+client = MongoClient(
+        host="test_mongodb",
+        port=27017,
+        username="root",
+        password="pass",
+        authSource="admin",
+    )
+
+mylist = [
+  {
+    id: 4,
+    name: "Elephant",
+    type: "wild",
+  },
+  {
+    id: 5,
+    name: "Horse",
+    type: "domestic",
+  },
+  {
+    id: 6,
+    name: "Shark",
+    type: "wild",
+  },
+]
+
+x = client.insert_many(mylist)
+
+db = client["animal_db"]
+db = get_db()
+_animals = db.animal_tb.find()
+print(list(_animals))
+```
+
 ### 7
 
 - Créer une nouvelle image img_insert qui permette de dockeriser le script précédent. Donner les commandes nécessaires pour l’image et le conteneur
